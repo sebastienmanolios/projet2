@@ -78,14 +78,7 @@ export default {
       {
         label:'Signup',
         url:'/signup'
-      },
-      {
-        label:'Sebastien',
-        url:'/sebastien'
-        label:'David',
-        url:'/david'
-      },
-     
+      }     
    ]
   }),
   methods : {
