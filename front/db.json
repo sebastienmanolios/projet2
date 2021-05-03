@@ -1,0 +1,32 @@
+{
+  "cars": [
+    {
+      "id": 1,
+      "marque": "Renault",
+      "modele": "Twingo",
+      "annee": "1998",
+      "carburant": "Diesel"
+    },
+    {
+      "id": 2,
+      "marque": "Volkswagen",
+      "modele": "Polo",
+      "annee": "1997",
+      "carburant": "Diesel"
+    },
+    {
+      "id": 3,
+      "marque": "Fiat",
+      "modele": "500",
+      "annee": "2006",
+      "carburant": "Essence"
+    },
+    {
+      "id": 4,
+      "marque": "Citroen",
+      "modele": "Saxo",
+      "annee": "2003",
+      "carburant": "Essence"
+    }
+  ]
+}
