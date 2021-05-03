@@ -1,5 +1,7 @@
 # Modif
 
-Modification Guillaume
-Guillaume
-David
+Modification Guillaume\
+Guillaume\
+David\
+Sébastien\
+Geoffrey\
