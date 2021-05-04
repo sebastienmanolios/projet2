@@ -4,6 +4,9 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const colors = require("colors");
 const dotenv = require("dotenv");
+const userRoutes = require("./routes/user");
+const carsRoutes = require("./routes/car");
+const { errorHandler, notFound } = require("./middleware/errorMiddleware");
 
 const app = express();
 
@@ -13,8 +16,11 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}))
-app.use("/", routes);
+app.use(express.urlencoded({ extended: true }));
+app.use("/cars", carsRoutes);
+app.use("/users", userRoutes);
+app.use(errorHandler);
+app.use(notFound);
 
 const listener = app.listen(process.env.PORT || 5500, () => {
   console.log(
