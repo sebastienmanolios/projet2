@@ -5,23 +5,23 @@
         <h1>Add a car</h1>
         <v-form @submit.prevent="createCar">
           <v-text-field
-            v-model="marque"
+            v-model="car.marque"
             label="marque"
             required
           ></v-text-field>
           <v-text-field
-            v-model="modele"
+            v-model="car.modele"
             label="modele"
             required
           ></v-text-field>
           <v-text-field
-            v-model="annee"
+            v-model="car.annee"
             label="annee"
             required
           ></v-text-field>
 
           <v-text-field
-            v-model="carburant"
+            v-model="car.carburant"
             label="carburant"
             required
           ></v-text-field>
@@ -42,11 +42,12 @@
 export default {
   data() {
     return {
-      car: this.createFreshCar(),
-       marque: '',
-        modele: '',
-        annee: '',
-        carburant:''
+    car: {
+      marque: '',
+      modele: '',
+      annee: '',
+      carburant:''
+    }
     }
   },
   methods: {
@@ -57,7 +58,7 @@ export default {
             name:"EventDetails",
             params: { id: this.event.id}
           })
-          this.car = this.createFreshCar()
+          // this.car = this.createFreshCar()
         })
         .catch(() => {})
       },
