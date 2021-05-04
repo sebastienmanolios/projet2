@@ -36,14 +36,5 @@ const getCars = async (req, res) => {
   res.json(cars);
 };
 
-// const getCars = (req, res) => {
-//     Car.find({}, (err, data) =>{
-//         if(err) {
-//              return res.json({message: "erreur "+ err})
-//         }
-//         console.log(data);
-//         return res.json(data); 
-//     })
-// };
 
 module.exports = { newCar, getCars };
