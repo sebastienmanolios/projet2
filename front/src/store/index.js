@@ -13,8 +13,8 @@ export default new Vuex.Store({
       state.cars = cars;
     },
 
-    ADD_CARS(state, car) {
-      state.cars = { ...cars, car };
+    ADD_CAR(state, car) {
+      state.cars.push(car)
     },
   },
   actions: {
@@ -29,9 +29,16 @@ export default new Vuex.Store({
         });
     },
 
-    addCar({ commit }) {
-      carServices.addCar().then();
+    addCar({ commit }, data) {
+      carServices
+        .addCar(data)
+        .then((res) => {
+          commit("ADD_CAR", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
+
   },
-  modules: {},
 });
