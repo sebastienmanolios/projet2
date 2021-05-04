@@ -60,6 +60,10 @@ export default {
         label:'List',
         url:'/list'
       },
+       {
+        label:'Add',
+        url:'/addcar'
+      },
       {
         label:'Login',
         url:'/login'
@@ -67,7 +71,8 @@ export default {
       {
         label:'Signup',
         url:'/signup'
-      }     
+      },
+     
    ]
   }),
   methods : {

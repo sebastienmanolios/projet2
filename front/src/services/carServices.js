@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5500",
+  baseURL: "http://localhost:5500/cars",
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -20,6 +20,6 @@ export default {
 
   //WIP
   addCar(data) {
-    return apiClient.post("/car" + data);
+    return apiClient.post("/car", data);
   },
 };
