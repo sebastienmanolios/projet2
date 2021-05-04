@@ -4,7 +4,7 @@ This project was made by live coding with Ben Hong, a core's Vue team's member
   on the nice learning platform  
   https://www.vuemastery.com/
 
-
+dedede
 Reuse design patterns to maximize my productivity
 
 ## Project setup
