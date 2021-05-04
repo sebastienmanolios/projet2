@@ -1,8 +1,4 @@
 const mongoose = require("mongoose");
-const colors = require("colors");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 const connectDB = async () => {
   try {
@@ -18,4 +14,4 @@ const connectDB = async () => {
   }
 };
 
-connectDB();
+module.exports = connectDB;
