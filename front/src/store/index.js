@@ -6,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cars: {},
+    cars: [],
   },
   mutations: {
     SET_CARS(state, cars) {

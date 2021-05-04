@@ -5,15 +5,24 @@
       class="mx-auto mb-5"
       max-width="500"
       outlined
+      v-for="car in cars" :key="car.id"
     >
+        <v-card-title >
+          {{ car.modele}}
+        </v-card-title>
+
       <v-list-item three-line>
         <v-list-item-content>
+          <v-list-item-title class="grey--text ml-4">
+            {{ car.annee}}
+          </v-list-item-title>
 
-          <v-list-item-title 
-            class="overline mb-4"
-            :cars="cars"
-          >
-            {{ cars.message }}
+          <v-list-item-title class="grey--text ml-4">
+            {{ car.carburant}}
+          </v-list-item-title>
+          
+          <v-list-item-title class="grey--text ml-4">
+            {{ car.marque}}
           </v-list-item-title>
         </v-list-item-content>
 
