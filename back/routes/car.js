@@ -1,9 +1,10 @@
-const express = require('express'); //import express
+const express = require("express"); //import express
 
-const router  = express.Router(); 
+const router = express.Router();
 
-const carController = require('../controllers/carController'); 
+const carController = require("../controllers/carController");
 
-router.post('/car', carController.newCar); 
+router.post("/car", carController.newCar);
+router.get("/cars", carController.getCars);
 
-module.exports = router; 
+module.exports = router;
