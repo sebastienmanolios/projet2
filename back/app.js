@@ -2,12 +2,15 @@ const express = require("express");
 const routes = require("./routes/car");
 const connectDB = require("./config/db");
 const colors = require("colors");
+const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
 
 dotenv.config();
 
 connectDB();
+
+app.use(cors());
 
 app.use(express.json());
 
