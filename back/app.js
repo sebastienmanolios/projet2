@@ -4,7 +4,6 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const colors = require("colors");
 const dotenv = require("dotenv");
-const bodyParser = require("body-parser");
 
 const app = express();
 
@@ -14,8 +13,7 @@ connectDB();
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}))
 app.use("/", routes);
 
 const listener = app.listen(process.env.PORT || 5500, () => {
