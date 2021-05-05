@@ -3,14 +3,26 @@
     <v-row>
       <v-col>
         <h1>Signup</h1>
-        <v-form ref="signUpForm" v-model="formValidity">
+        <v-form ref="signUpForm" v-model="formValidity" @submit.prevent="register">
+          <v-text-field
+            label="Username"
+            type="username"
+            v-model="username"
+            required
+          ></v-text-field> 
           <v-text-field
             label="Email"
             type="email"
             v-model="email"
             :rules="emailRules"
             required
-          ></v-text-field>        
+          ></v-text-field>  
+          <v-text-field
+            label="Password"
+            type="password"
+            v-model="password"
+            required
+          ></v-text-field>       
           <v-checkbox
             label="Agree to terms & conditions"
             v-model="agreeToTerms"
@@ -24,13 +36,13 @@
             :disabled="!formValidity"
             >Submit</v-btn
           >
-          <v-btn color="success" class="mr-4" @click="validateForm"
+          <!-- <v-btn color="success" class="mr-4" @click="validateForm"
             >Validate Form</v-btn
           >
           <v-btn color="warning" class="mr-4" @click="resetValidation"
             >Reset Validation</v-btn
           >
-          <v-btn color="error" @click="resetForm">Reset</v-btn>
+          <v-btn color="error" @click="resetForm">Reset</v-btn> -->
         </v-form>
       </v-col>
     </v-row>
@@ -40,15 +52,16 @@
 <script>
 export default {
   data: () => ({
+    username: '',
+    email: '',
+    password: '',
+    errors: [],
     agreeToTerms: false,
     agreeToTermsRules: [
       value =>
         !!value ||
         'You must agree to the terms and conditions to sign up for an account.'
     ],
-    birthday: '',
-    browsers: ['Chrome', 'Firefox', 'Safari', 'Edge', 'Brave'],
-    email: '',
     emailRules: [
       value => !!value || 'Email is required.',
       value => value.indexOf('@') !== 0 || 'Email should have a username.',
@@ -72,6 +85,20 @@ export default {
     },
     validateForm() {
       this.$refs.signUpForm.validate()
+    },
+    register () {
+      this.$store
+        .dispatch('register', {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push({ name: 'AddCar' })
+        })
+        .catch(err => {
+          this.errors = err.response.data.errors
+        })
     }
   }
 }
