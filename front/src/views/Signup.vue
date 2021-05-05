@@ -7,7 +7,7 @@
           <v-text-field
             label="Username"
             type="username"
-            v-model="username"
+            v-model="name"
             required
           ></v-text-field> 
           <v-text-field
@@ -52,7 +52,7 @@
 <script>
 export default {
   data: () => ({
-    username: '',
+    name: '',
     email: '',
     password: '',
     errors: [],
