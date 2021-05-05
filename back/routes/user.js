@@ -37,7 +37,6 @@ const router = express.Router();
 *          description: "successful operation" 
 */
 router.post("/login", authUser);
-
-router.route("/").post(registerUser);
+router.route("/register").post(registerUser);
 
 module.exports = router;

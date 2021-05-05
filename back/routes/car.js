@@ -2,7 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-const carController = require("../controllers/carController");
+const { newCar, getCars } = require("../controllers/carController");
+const protect = require("../middleware/authMiddleware");
 
 /**
 * @swagger
@@ -73,7 +74,7 @@ const carController = require("../controllers/carController");
  *       500:
  *         description: Some server error
  */
-router.post("/car", carController.newCar);
+router.route("/car").post(protect, newCar);
 
 /**
  * @swagger
@@ -86,6 +87,8 @@ router.post("/car", carController.newCar);
  *          200:
  *              description: Success
  */
-router.get("/cars", carController.getCars);
+
+
+router.get("/cars", getCars);
 
 module.exports = router;
