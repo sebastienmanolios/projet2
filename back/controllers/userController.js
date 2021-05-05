@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const generateToken = require("../utils/generateToken.js");
 const User = require("../models/userModel");
+const bcrypt = require('bcryptjs');
 
 // @desc Auth user & get token
 // @route Post /api/users/login
@@ -32,10 +33,12 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("L'utilisateur existe déjà");
   }
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt); 
   const user = await User.create({
     name,
     email,
-    password,
+    hashedPassword,
   });
 
   if (user) {
