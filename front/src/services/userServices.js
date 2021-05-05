@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5500/cars",
+  baseURL: "http://localhost:5500/users",
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -10,20 +10,13 @@ const apiClient = axios.create({
 });
 
 export default {
-  getCars() {
-    return apiClient.get("/cars");
-  },
-
-  // getEventById(id) {
-  //   return apiClient.get("/events/" + id);
-  // },
-
-  //WIP
-  addCar(data) {
-    return apiClient.post("/car", data);
-  },
-
+  
   registerUser(credentials) {
-    return apiClient.post("/users/register", credentials);
+    return apiClient.post("/register", credentials);
   },
+
+  loginUser(credentials) {
+    return apiClient.post("/login", credentials);
+  },
+  
 };

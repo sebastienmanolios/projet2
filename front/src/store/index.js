@@ -1,14 +1,13 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import carServices from "@/services/carServices.js";
-// import axios from "axios";
+import userServices from "@/services/userServices.js";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cars: [],
-    userData: {},
+    cars: []
   },
 
   mutations: {
@@ -21,14 +20,7 @@ export default new Vuex.Store({
     },
     SET_USER_DATA(state, userData) {
       state.userData = userData;
-      // localStorage expects a string, not a object
       localStorage.setItem("user", JSON.stringify(this.state.userData));
-      // We need to set the headers of our instance axios with that token from the user data
-      // ---- We are just adding the token into the header ----- //
-      // ---- So that when we make API calls, we have that token that the server can verify !!! ----
-      // axios.defaults.headers.common[
-      //   "Authorization"
-      // ] = `Basic ${userData.token}`;
     },
   },
   actions: {
@@ -53,20 +45,29 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
+
     register({ commit }, credentials) {
-      carServices
+      userServices
         .registerUser(credentials)
-        .then((res) => {
-          commit("SET_USER_DATA", {
-            id: res.data._id,
-            name: res.data.name,
-            email: res.data.email,
-            token: res.data.token,
-          });
+        .then(( { data }) => {
+          commit("SET_USER_DATA", data);
         })
         .catch((err) => {
           console.log(err);
         });
     },
+
+    login({ commit }, credentials) {
+      userServices
+        .loginUser(credentials)
+        .then(({ data }) => {
+          commit("SET_USER_DATA", data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+
   },
 });

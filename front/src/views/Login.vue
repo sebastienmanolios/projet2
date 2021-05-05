@@ -6,14 +6,16 @@
     </v-card-title>
   <!-- ----------------------------------------------------------------------- -->
     <v-card-text>
-      <v-form>
+      <v-form @submit.prevent="login">
         <v-text-field 
-          label="Username"
+          label="Email"
+          v-model="email"
           prepend-icon="mdi-account-circle"
           />
         <v-text-field
           :type="showPassword ? 'text' : 'password'"
           label="Password"
+          v-model="password"
           prepend-icon="mdi-lock"
           :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
           @click:append="showPassword = !showPassword"
@@ -36,9 +38,27 @@
     name: 'LoginPage',
     data() {
       return {
-        showPassword: false
+        showPassword: false,
+        email: '',
+        password: '',
+        error: null
       }
     },
+    methods: {
+    login () {
+      this.$store
+        .dispatch('login', {
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push({ name: 'AddCar' })
+        })
+        .catch(err => {
+          this.error = err.response.data.error
+        })
+    }
+  }
     
   }
 </script>
