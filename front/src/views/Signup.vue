@@ -36,6 +36,7 @@
             :disabled="!formValidity"
             >Submit</v-btn
           >
+          <p>{{$store.state.userData}}</p>
           <!-- <v-btn color="success" class="mr-4" @click="validateForm"
             >Validate Form</v-btn
           >
@@ -57,11 +58,13 @@ export default {
     password: '',
     errors: [],
     agreeToTerms: false,
+
     agreeToTermsRules: [
       value =>
         !!value ||
         'You must agree to the terms and conditions to sign up for an account.'
     ],
+
     emailRules: [
       value => !!value || 'Email is required.',
       value => value.indexOf('@') !== 0 || 'Email should have a username.',
@@ -74,8 +77,10 @@ export default {
         value.indexOf('.') <= value.length - 3 ||
         'Email should contain a valid domain extension.'
     ],
-    formValidity: false
+    
+    formValidity: false,
   }),
+
   methods: {
     resetForm() {
       this.$refs.signUpForm.reset()
@@ -99,7 +104,7 @@ export default {
         .catch(err => {
           this.errors = err.response.data.errors
         })
-    }
-  }
+    },
+  },
 }
 </script>

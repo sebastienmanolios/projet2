@@ -1,5 +1,8 @@
 import axios from "axios";
 
+const userCred = JSON.parse(localStorage.getItem("user"));
+// console.log($store.state.userData);
+
 const apiClient = axios.create({
   baseURL: "http://localhost:5500",
   withCredentials: false,
@@ -20,7 +23,11 @@ export default {
 
   //WIP
   addCar(data) {
-    return apiClient.post("/cars/car", data);
+    return apiClient.post("/cars/car", data, {
+      headers: {
+        Authorization: `Bearer ${userCred.token}`,
+      },
+    });
   },
 
   registerUser(credentials) {
