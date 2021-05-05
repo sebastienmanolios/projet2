@@ -22,4 +22,8 @@ export default {
   addCar(data) {
     return apiClient.post("/car", data);
   },
+
+  registerUser(credentials) {
+    return apiClient.post("/users/register", credentials);
+  },
 };
