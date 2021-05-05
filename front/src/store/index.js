@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import carServices from "@/services/carServices.js";
+import axios from "axios";
 
 Vue.use(Vuex);
 

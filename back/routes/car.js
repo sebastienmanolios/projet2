@@ -2,9 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
-const carController = require("../controllers/carController");
+const { newCar, getCars } = require("../controllers/carController");
+const protect = require("../middleware/authMiddleware");
 
-router.post("/car", carController.newCar);
-router.get("/cars", carController.getCars);
+router.route("/car").post(protect, newCar);
+router.get("/cars", getCars);
 
 module.exports = router;
